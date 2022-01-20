@@ -20,6 +20,10 @@ import {
   shortenAddress,
 } from "./candy-machine";
 
+
+import Slider from "./slider.js";
+
+
 // for the webpage 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -31,7 +35,6 @@ import sol from './images/solana_logo.png'
 import pain from './images/pain.jpg'
 import anger from './images/anger.jpg'
 import happy from './images/happy.jpg'
-import lust from './images/lust.jpg'
 import sad from './images/sad.jpg'
 
 
@@ -203,7 +206,14 @@ const Home = (props: HomeProps) => {
   document.title = 'Emopow'
   
   return (
-    <main style={styles}>
+    <main style={styles} className="App">
+      {/* <div className="contact-div">
+        <div className="contact">
+          dicord
+        </div>
+      </div> */}
+
+
       <Container fluid id="home">
       <Navbar className="pt-5" expand="lg">
         <Container>
@@ -211,11 +221,14 @@ const Home = (props: HomeProps) => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
+              <Nav.Link style={navitem} target="_blank" rel="noreferrer" href="https://twitter.com/EmopowNFT"><svg viewBox="0 0 28 28" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10.2777 23C7.96696 23 5.81298 22.3045 4 21.1046C5.53928 21.2077 8.25576 20.9608 9.94541 19.2931C7.40363 19.1724 6.25733 17.1552 6.10781 16.2931C6.32378 16.3793 7.35379 16.4828 7.93524 16.2414C5.01136 15.4828 4.56281 12.8276 4.66248 12.0172C5.21071 12.4138 6.14104 12.5517 6.50652 12.5172C3.78199 10.5 4.76216 7.46552 5.24394 6.81034C7.19916 9.61336 10.1294 11.1876 13.7546 11.2752C13.6862 10.965 13.6501 10.6421 13.6501 10.3103C13.6501 7.92981 15.5096 6 17.8034 6C19.0018 6 20.0817 6.52682 20.8398 7.36949C21.6406 7.1753 22.8459 6.7207 23.4352 6.32759C23.1382 7.43103 22.2135 8.35154 21.6542 8.69271C21.6589 8.70432 21.6497 8.68105 21.6542 8.69271C22.1455 8.61581 23.4748 8.35145 24 7.98276C23.7403 8.60266 22.76 9.63337 21.9555 10.2104C22.1052 17.0412 17.0546 23 10.2777 23Z"></path></svg></Nav.Link>
+              <Nav.Link style={navitem} target="_blank" rel="noreferrer" href="https://www.instagram.com/emopownft/"><svg viewBox="0 0 28 28" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21 8.5C21 9.32843 20.3284 10 19.5 10C18.6716 10 18 9.32843 18 8.5C18 7.67157 18.6716 7 19.5 7C20.3284 7 21 7.67157 21 8.5Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M14 19C16.7614 19 19 16.7614 19 14C19 11.2386 16.7614 9 14 9C11.2386 9 9 11.2386 9 14C9 16.7614 11.2386 19 14 19ZM14 17C15.6569 17 17 15.6569 17 14C17 12.3431 15.6569 11 14 11C12.3431 11 11 12.3431 11 14C11 15.6569 12.3431 17 14 17Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M4 13.6C4 10.2397 4 8.55953 4.65396 7.27606C5.2292 6.14708 6.14708 5.2292 7.27606 4.65396C8.55953 4 10.2397 4 13.6 4H14.4C17.7603 4 19.4405 4 20.7239 4.65396C21.8529 5.2292 22.7708 6.14708 23.346 7.27606C24 8.55953 24 10.2397 24 13.6V14.4C24 17.7603 24 19.4405 23.346 20.7239C22.7708 21.8529 21.8529 22.7708 20.7239 23.346C19.4405 24 17.7603 24 14.4 24H13.6C10.2397 24 8.55953 24 7.27606 23.346C6.14708 22.7708 5.2292 21.8529 4.65396 20.7239C4 19.4405 4 17.7603 4 14.4V13.6ZM13.6 6H14.4C16.1132 6 17.2777 6.00156 18.1779 6.0751C19.0548 6.14674 19.5032 6.27659 19.816 6.43597C20.5686 6.81947 21.1805 7.43139 21.564 8.18404C21.7234 8.49684 21.8533 8.94524 21.9249 9.82208C21.9984 10.7223 22 11.8868 22 13.6V14.4C22 16.1132 21.9984 17.2777 21.9249 18.1779C21.8533 19.0548 21.7234 19.5032 21.564 19.816C21.1805 20.5686 20.5686 21.1805 19.816 21.564C19.5032 21.7234 19.0548 21.8533 18.1779 21.9249C17.2777 21.9984 16.1132 22 14.4 22H13.6C11.8868 22 10.7223 21.9984 9.82208 21.9249C8.94524 21.8533 8.49684 21.7234 8.18404 21.564C7.43139 21.1805 6.81947 20.5686 6.43597 19.816C6.27659 19.5032 6.14674 19.0548 6.0751 18.1779C6.00156 17.2777 6 16.1132 6 14.4V13.6C6 11.8868 6.00156 10.7223 6.0751 9.82208C6.14674 8.94524 6.27659 8.49684 6.43597 8.18404C6.81947 7.43139 7.43139 6.81947 8.18404 6.43597C8.49684 6.27659 8.94524 6.14674 9.82208 6.0751C10.7223 6.00156 11.8868 6 13.6 6Z"></path></svg></Nav.Link>
+              <Nav.Link style={navitem} target="_blank" rel="noreferrer" href="https://discord.gg/BCx7m35G"><svg viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M38.1863 13.7599C35.5913 11.5656 32.4773 10.4685 29.1902 10.2856L28.6712 10.8342C31.6123 11.5656 34.2073 13.0285 36.6293 15.0399C33.6883 13.3942 30.4013 12.2971 26.9412 11.9314C25.9032 11.7485 25.0382 11.7485 24.0002 11.7485C22.9622 11.7485 22.0972 11.7485 21.0592 11.9314C17.5992 12.2971 14.3121 13.3942 11.3711 15.0399C13.7931 13.0285 16.3882 11.5656 19.3292 10.8342L18.8102 10.2856C15.5231 10.4685 12.4091 11.5656 9.8141 13.7599C6.87308 19.6114 5.31607 26.1942 5.14307 32.9599C7.73809 35.8856 11.3711 37.7142 15.1771 37.7142C15.1771 37.7142 16.3882 36.2514 17.2532 34.9714C15.0041 34.4228 12.9281 33.1428 11.5441 31.1314C12.7551 31.8628 13.9661 32.5942 15.1771 33.1428C16.7342 33.8742 18.2912 34.2399 19.8482 34.6056C21.2322 34.7885 22.6162 34.9714 24.0002 34.9714C25.3842 34.9714 26.7682 34.7885 28.1522 34.6056C29.7093 34.2399 31.2663 33.8742 32.8233 33.1428C34.0343 32.5942 35.2453 31.8628 36.4563 31.1314C35.0723 33.1428 32.9963 34.4228 30.7473 34.9714C31.6123 36.2514 32.8233 37.7142 32.8233 37.7142C36.6293 37.7142 40.2623 35.8856 42.8573 32.9599C42.6843 26.1942 41.1273 19.6114 38.1863 13.7599ZM18.2912 29.6685C16.5612 29.6685 15.0041 28.0228 15.0041 26.0114C15.0041 23.9999 16.5612 22.3542 18.2912 22.3542C20.0212 22.3542 21.5782 23.9999 21.5782 26.0114C21.5782 28.0228 20.0212 29.6685 18.2912 29.6685ZM29.7093 29.6685C27.9792 29.6685 26.4222 28.0228 26.4222 26.0114C26.4222 23.9999 27.9792 22.3542 29.7093 22.3542C31.4393 22.3542 32.9963 23.9999 32.9963 26.0114C32.9963 28.0228 31.4393 29.6685 29.7093 29.6685Z"></path></svg></Nav.Link>
               <Nav.Link style={navitem} href="#About">About</Nav.Link>
               <Nav.Link style={navitem} href="#Emotions">Emotions</Nav.Link>
               <Nav.Link style={navitem} href="#FAQ">FAQ</Nav.Link>
+              <Nav.Link style={navitem} href="#Roadmap">Roadmap</Nav.Link>
               <Nav.Link style={navitem} href="#Team">Team</Nav.Link>
-              <Nav.Link style={navitem} href="#contact-us">Contact Us</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -225,14 +238,15 @@ const Home = (props: HomeProps) => {
       <Row className="mt-3">
           <Col className="mt-3 d-flex justify-content-center text-center">
             <img style={{borderRadius: "50%"}}
-              height="150"
+              height="200"
+              width="200"
               alt="logo"
-              src={logo}>
+              src={gif}>
             </img>
           </Col>
         </Row>
         <Row>
-          <Col className="d-flex justify-content-center text-center">
+          <Col className="  mt-3 d-flex justify-content-center text-center">
             <h1 className="white">EMOPOW</h1>
           </Col>
         </Row>
@@ -260,8 +274,14 @@ const Home = (props: HomeProps) => {
         <Row>
           <Col className="d-flex justify-content-center text-center">
             <div className="tran-box">
-              <strong>Launch Date <br></br><br></br></strong>
+              {/* <strong>Launch Date <br></br><br></br></strong> */}
               Join Discord to know more
+              <br></br><br></br>
+              <strong>
+              <a href="https://discord.gg/BCx7m35G" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M38.1863 13.7599C35.5913 11.5656 32.4773 10.4685 29.1902 10.2856L28.6712 10.8342C31.6123 11.5656 34.2073 13.0285 36.6293 15.0399C33.6883 13.3942 30.4013 12.2971 26.9412 11.9314C25.9032 11.7485 25.0382 11.7485 24.0002 11.7485C22.9622 11.7485 22.0972 11.7485 21.0592 11.9314C17.5992 12.2971 14.3121 13.3942 11.3711 15.0399C13.7931 13.0285 16.3882 11.5656 19.3292 10.8342L18.8102 10.2856C15.5231 10.4685 12.4091 11.5656 9.8141 13.7599C6.87308 19.6114 5.31607 26.1942 5.14307 32.9599C7.73809 35.8856 11.3711 37.7142 15.1771 37.7142C15.1771 37.7142 16.3882 36.2514 17.2532 34.9714C15.0041 34.4228 12.9281 33.1428 11.5441 31.1314C12.7551 31.8628 13.9661 32.5942 15.1771 33.1428C16.7342 33.8742 18.2912 34.2399 19.8482 34.6056C21.2322 34.7885 22.6162 34.9714 24.0002 34.9714C25.3842 34.9714 26.7682 34.7885 28.1522 34.6056C29.7093 34.2399 31.2663 33.8742 32.8233 33.1428C34.0343 32.5942 35.2453 31.8628 36.4563 31.1314C35.0723 33.1428 32.9963 34.4228 30.7473 34.9714C31.6123 36.2514 32.8233 37.7142 32.8233 37.7142C36.6293 37.7142 40.2623 35.8856 42.8573 32.9599C42.6843 26.1942 41.1273 19.6114 38.1863 13.7599ZM18.2912 29.6685C16.5612 29.6685 15.0041 28.0228 15.0041 26.0114C15.0041 23.9999 16.5612 22.3542 18.2912 22.3542C20.0212 22.3542 21.5782 23.9999 21.5782 26.0114C21.5782 28.0228 20.0212 29.6685 18.2912 29.6685ZM29.7093 29.6685C27.9792 29.6685 26.4222 28.0228 26.4222 26.0114C26.4222 23.9999 27.9792 22.3542 29.7093 22.3542C31.4393 22.3542 32.9963 23.9999 32.9963 26.0114C32.9963 28.0228 31.4393 29.6685 29.7093 29.6685Z"></path></svg>
+              </a>
+              </strong>
             </div>
           </Col>
         </Row>
@@ -341,102 +361,15 @@ const Home = (props: HomeProps) => {
 
 
       <div id="Emotions">
-        <Container>
+        <Container className="mb-5">
           <Row className="mt-3 d-flex justify-content-center text-center">
             <Col className="mt-5">
-              <h1 className="white">CURRENT EMOTIONS ON EMOPOW</h1>
+              <h1 className="white">27 EMOTIONS ON EMOPOW</h1>
             </Col>
           </Row>
 
-          <div className="jss674">
-            <Row>
-              <Col>
-                <div className="mt-5 tran-box road-box .jss675 justify-content-center text-center">
-                  <h2 className="justify-content-center text-center">Pain</h2>
-                  <p className="tran-para">
-                    Pain in not just a world, let's show what it is by the art
-                  </p>
-                  <img style={{borderRadius: "50%", marginTop:"10px"}}
-                    height="200"
-                    width="200"
-                    alt=""
-                    src={pain}>
-                  </img>
-                </div>
-              </Col>
-              <Col>
-                <div className="mt-5 tran-box road-box .jss675 justify-content-center text-center">
-                  <h2 className="justify-content-center text-center">Anger</h2>
-                  <p className="tran-para">
-                    Anger in not just a world, let's show what it is by the art
-                  </p>
-                  <img style={{borderRadius: "50%", marginTop:"10px"}}
-                    height="200"
-                    width="200"
-                    alt=""
-                    src={anger}>
-                  </img>
-                </div>
-              </Col>
-              <Col>
-                <div className="mt-5 tran-box road-box .jss675 justify-content-center text-center">
-                  <h2 className="justify-content-center text-center">Happy</h2>
-                  <p className="tran-para">
-                    Happy in not just a world, let's show what it is by the art
-                  </p>
-                  <img style={{borderRadius: "50%", marginTop:"10px"}}
-                    height="200"
-                    width="200"
-                    alt=""
-                    src={happy}>
-                  </img>
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <div className="mt-5 tran-box road-box .jss675 justify-content-center text-center">
-                  <h2 className="justify-content-center text-center">Lust</h2>
-                  <p className="tran-para">
-                    Lust in not just a world, let's show what it is by the art
-                  </p>
-                  <img style={{borderRadius: "50%", marginTop:"10px"}}
-                    height="200"
-                    width="200"
-                    alt=""
-                    src={lust}>
-                  </img>
-                </div>
-              </Col>
-              <Col>
-                <div className="mt-5 tran-box road-box .jss675 justify-content-center text-center">
-                  <h2 className="justify-content-center text-center">Sad</h2>
-                  <p className="tran-para">
-                    Sadness in not just a world, let's show what it is by the art
-                  </p>
-                  <img style={{borderRadius: "50%", marginTop:"10px"}}
-                    height="200"
-                    width="200"
-                    alt=""
-                    src={sad}>
-                  </img>
-                </div>
-              </Col>
-              {/* <Col>
-                <div className="mt-5 tran-box road-box .jss675 justify-content-center text-center">
-                  <h2 className="justify-content-center text-center">Happy</h2>
-                  <p className="tran-para">
-                    Happy in not just a world, let's show what it is by the art
-                  </p>
-                  <img style={{borderRadius: "50%", marginTop:"10px"}}
-                    height="200"
-                    width="200"
-                    alt=""
-                    src={gif}>
-                  </img>
-                </div>
-              </Col> */}
-            </Row>
+          <div className="jss674 justify-content-center text-center">
+          <Slider />
           </div>
         </Container>
       </div>
@@ -453,44 +386,20 @@ const Home = (props: HomeProps) => {
           <div>
             <div className="mt-5 tran-box road-box">
               <p className="tran-para">
+                <strong>Q.</strong> What is EMOPOW ?
+              </p>
+              <p className="tran-para">
+                <strong>A.</strong> EMOPOW is NFT collection of 27 emotions of human on SOLANA blockchain.
+              </p>
+            </div>
+            <div className="mt-5 tran-box road-box">
+              <p className="tran-para">
                 <strong>Q.</strong> What is the total supply ?
               </p>
               <p className="tran-para">
-                <strong>A.</strong> First We will launch with a fixed supply to mint after that we will open it for the artist to show their emotions through arts.
+                <strong>A.</strong> There will be 270 unique varient of each emotion. Total supply will be 7290 emotions.
               </p>
             </div>
-            <div className="mt-5 tran-box road-box">
-              <p className="tran-para">
-                <strong>Q.</strong> What's the mint price ?
-              </p>
-              <p className="tran-para">
-                <strong>A.</strong> Mint price is 2.7 Sol, because there are total 27 emotions in human.
-              </p>
-            </div>
-            <div className="mt-5 tran-box road-box">
-              <p className="tran-para">
-                <strong>Q.</strong> Is there a limit to how many Emopow I can mint ?
-              </p>
-              <p className="tran-para">
-                <strong>A.</strong> No, You can have as many emotions as you want.
-              </p>
-            </div>
-            <div className="mt-5 tran-box road-box">
-              <p className="tran-para">
-                <strong>Q.</strong> Will there be a whitelist or a pre-sale ?
-              </p>
-              <p className="tran-para">
-                <strong>A.</strong> No, but top 3 people with the most minting count will win a free emotion.
-              </p>
-            </div>
-            {/* <div className="mt-5 tran-box road-box">
-              <p className="tran-para">
-                <strong>Q.</strong> What about secondary sale royalties ?
-              </p>
-              <p className="tran-para">
-                <strong>A.</strong> Second sale royalties will be 3% and 50% of them will be given to a lucky holder each week.
-              </p>
-            </div> */}
             <div className="mt-5 tran-box road-box">
               <p className="tran-para">
                 <strong>Q.</strong> When will you launch ?
@@ -499,16 +408,56 @@ const Home = (props: HomeProps) => {
                 <strong>A.</strong> Join our discord to know more about this.
               </p>
             </div>
+            <div className="mt-5 tran-box road-box">
+              <p className="tran-para">
+                <strong>Q.</strong> What's the mint price ?
+              </p>
+              <p className="tran-para">
+                <strong>A.</strong> Public mint price is 1.27 Sol, Private Mint price is 1 Sol.
+              </p>
+            </div>
+            <div className="mt-5 tran-box road-box">
+              <p className="tran-para">
+                <strong>Q.</strong> Is there a limit to how many Emopow I can mint ?
+              </p>
+              <p className="tran-para">
+                <strong>A.</strong> Yes, You can mint 27 emotions.
+              </p>
+            </div>
+            <div className="mt-5 tran-box road-box">
+              <p className="tran-para">
+                <strong>Q.</strong> Will there be a whitelist or a pre-sale ?
+              </p>
+              <p className="tran-para">
+                <strong>A.</strong> Yes, There will be a private sale.
+              </p>
+            </div>
+            {/* <div className="mt-5 tran-box road-box">
+              <p className="tran-para">
+                <strong>Q.</strong> Why Solana and not Ethereum? 
+              </p>
+              <p className="tran-para">
+                <strong>A.</strong> We are very bullish on Solana which, with 50.000 transactions per second is by far the fastest blockchain network (compared to ETH's 15-45TPS). Gas wars on Ethereum have gone through the roof lately which we want to save our users from. 
+              </p>
+            </div>
+            <div className="mt-5 tran-box road-box">
+              <p className="tran-para">
+                <strong>Q.</strong> ’m buying my first NFT. How do I do this?
+              </p>
+              <p className="tran-para">
+                <strong>A.</strong>  Our NFTs will be minted (registered on the blockchain) on the Solana blockchain. For this all you need is Solana coins, a compatible wallet and our website. Our minting process will support the following wallets: Phantom-, Sollet-, Solflare 
+              </p>
+            </div> */}
           </div>
         </Container>
       </div>
 
 
-      <div>
+      <div id="Team">
         <Container>
           <Row className="mt-3 d-flex justify-content-center text-center">
             <Col className="mt-5">
-              <h1 className="white">Team</h1>
+              <h1 className="white">TEAM</h1>
             </Col>
           </Row>
 
@@ -557,6 +506,82 @@ const Home = (props: HomeProps) => {
                 </div>
               </Col>
             </Row>
+          </div>
+        </Container>
+      </div>
+
+
+      <div className="tran-bg" id="Roadmap">
+        <Container>
+          <Row className="mt-3 d-flex justify-content-center text-center">
+            <Col className="mt-5">
+              <h1 className="white">ROADMAP</h1>
+            </Col>
+          </Row>
+
+          <div>
+            <div className="mt-5 tran-box road-box">
+              <p className="tran-para">
+                <strong>0% EXPRESS THE EMOTIONS</strong>
+              </p>
+              <p className="tran-para">
+                <strong>-</strong> You can now register and apply for the VIP exclusive private. Be one of the first to get your hands on a Emopow.
+              </p>
+              <p className="tran-para">
+                <strong>-</strong> Run promotions and marketing.
+              </p>
+            </div>
+            <div className="mt-5 tran-box road-box">
+              <p className="tran-para">
+                <strong>25% FIRST LOOK OF EMOPOW</strong>
+              </p>
+              <p className="tran-para">
+                <strong>-</strong> A VIP exclusive private sale for whitelisted.
+              </p>
+              <p className="tran-para">
+                <strong>-</strong> A lot of contest and giveaway.
+              </p>
+            </div>
+            <div className="mt-5 tran-box road-box">
+              <p className="tran-para">
+                <strong>50% GET YOUR EMOPOW</strong>
+              </p>
+              <p className="tran-para">
+                <strong>-</strong> A public sale for emopow.
+              </p>
+              <p className="tran-para">
+                <strong>-</strong> A lot of contest and giveaway.
+              </p>
+
+            </div>
+            <div className="mt-5 tran-box road-box">
+              <p className="tran-para">
+                <strong>75% LOVE YOUR EMOPOW</strong>
+              </p>
+              <p className="tran-para">
+                <strong>-</strong> Will do a secondary listing on market place.
+              </p>
+              <p className="tran-para">
+                <strong>-</strong> Airdrop the Sol token to community.
+              </p>
+            </div>
+            <div className="mt-5 tran-box road-box">
+              <p className="tran-para">
+                <strong>100% HOLD YOUR EMOPOW</strong>
+              </p>
+              <p className="tran-para">
+                <strong>-</strong> Time to 10x from the mint price.
+              </p>
+              <p className="tran-para">
+                <strong>-</strong> More brand collaborations are coming. 
+              </p>
+              <p className="tran-para">
+                <strong>-</strong> Launch of 27 3D Emotions. Only minter will get access to this drop.
+              </p>
+              <p className="tran-para">
+                <strong>-</strong> Airdrop the Sol token to community.
+              </p>
+            </div>
           </div>
         </Container>
       </div>
@@ -789,52 +814,14 @@ const Home = (props: HomeProps) => {
         </Container>
       </div> */}
 
-      <div className="tran-bg pt-3 pb-5" id="contact-us">
-        <Container>
-          <Row className="mt-5 d-flex justify-content-center text-center">
+      <div id="contact-us">
+          <Row className="mt-2 pt-4 d-flex justify-content-center text-center">
             <Col>
-              <h1 className="white">
-                Follow the news about us
-              </h1>
-            </Col>
-          </Row>
-          <Row className="mt-5 mb-5 d-flex justify-content-center text-center">
-            <Col>
-            <a href="https://discord.gg/mFSaHEjx" target="_blank" rel="noreferrer">
-            <svg className="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 66.52A50 50 0 00414.12 17L97.64 16A49.65 49.65 0 0048 65.52V392c0 27.3 22.28 48 49.64 48H368l-13-44 109 100zM324.65 329.81s-8.72-10.39-16-19.32C340.39 301.55 352.5 282 352.5 282a139 139 0 01-27.85 14.25 173.31 173.31 0 01-35.11 10.39 170.05 170.05 0 01-62.72-.24 184.45 184.45 0 01-35.59-10.4 141.46 141.46 0 01-17.68-8.21c-.73-.48-1.45-.72-2.18-1.21-.49-.24-.73-.48-1-.48-4.36-2.42-6.78-4.11-6.78-4.11s11.62 19.09 42.38 28.26c-7.27 9.18-16.23 19.81-16.23 19.81-53.51-1.69-73.85-36.47-73.85-36.47 0-77.06 34.87-139.62 34.87-139.62 34.87-25.85 67.8-25.12 67.8-25.12l2.42 2.9c-43.59 12.32-63.44 31.4-63.44 31.4s5.32-2.9 14.28-6.77c25.91-11.35 46.5-14.25 55-15.21a24 24 0 014.12-.49 205.62 205.62 0 0148.91-.48 201.62 201.62 0 0172.89 22.95s-19.13-18.15-60.3-30.45l3.39-3.86s33.17-.73 67.81 25.16c0 0 34.87 62.56 34.87 139.62 0-.28-20.35 34.5-73.86 36.19z"></path><path d="M212.05 218c-13.8 0-24.7 11.84-24.7 26.57s11.14 26.57 24.7 26.57c13.8 0 24.7-11.83 24.7-26.57.25-14.76-10.9-26.57-24.7-26.57zM300.43 218c-13.8 0-24.7 11.84-24.7 26.57s11.14 26.57 24.7 26.57c13.81 0 24.7-11.83 24.7-26.57S314 218 300.43 218z"></path></svg>
-            </a>
-            </Col>
-            {/* <Col>
-              <svg className="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M349.33 69.33a93.62 93.62 0 0193.34 93.34v186.66a93.62 93.62 0 01-93.34 93.34H162.67a93.62 93.62 0 01-93.34-93.34V162.67a93.62 93.62 0 0193.34-93.34h186.66m0-37.33H162.67C90.8 32 32 90.8 32 162.67v186.66C32 421.2 90.8 480 162.67 480h186.66C421.2 480 480 421.2 480 349.33V162.67C480 90.8 421.2 32 349.33 32z"></path><path d="M377.33 162.67a28 28 0 1128-28 27.94 27.94 0 01-28 28zM256 181.33A74.67 74.67 0 11181.33 256 74.75 74.75 0 01256 181.33m0-37.33a112 112 0 10112 112 112 112 0 00-112-112z"></path></svg>
-            </Col> */}
-            <Col>
-            <a href="https://twitter.com/KokongzNFTs" target="_blank" rel="noreferrer">
-            <svg className="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M496 109.5a201.8 201.8 0 01-56.55 15.3 97.51 97.51 0 0043.33-53.6 197.74 197.74 0 01-62.56 23.5A99.14 99.14 0 00348.31 64c-54.42 0-98.46 43.4-98.46 96.9a93.21 93.21 0 002.54 22.1 280.7 280.7 0 01-203-101.3A95.69 95.69 0 0036 130.4c0 33.6 17.53 63.3 44 80.7A97.5 97.5 0 0135.22 199v1.2c0 47 34 86.1 79 95a100.76 100.76 0 01-25.94 3.4 94.38 94.38 0 01-18.51-1.8c12.51 38.5 48.92 66.5 92.05 67.3A199.59 199.59 0 0139.5 405.6a203 203 0 01-23.5-1.4A278.68 278.68 0 00166.74 448c181.36 0 280.44-147.7 280.44-275.8 0-4.2-.11-8.4-.31-12.5A198.48 198.48 0 00496 109.5z"></path></svg>        
-            </a>  
-            </Col>
-          </Row>
-          {/* <Row className="mt-5 d-flex justify-content-center text-center">
-            <Col>
-              <h3 className="white">
-                contact@degenlizzy.art
-              </h3>
-            </Col>
-          </Row> */}
-          {/* <Row className="mt-3 d-flex justify-content-center text-center">
-            <Col>
-              <h3 className="white">
-              Read our Terms and Conditions
-              </h3>
-            </Col>
-          </Row> */}
-          <Row className="mt-3 d-flex justify-content-center text-center">
-            <Col>
-              <h3 className="white">
+              <h6 className="white">
               Copyright 2021 by Emopow. All rights reserved.
-              </h3>
+              </h6>
             </Col>
           </Row>
-        </Container>
       </div>
 
       <Snackbar
